@@ -22,7 +22,7 @@ class Slider {
         // *****  Технические переменные   ***** 
         this.sliderSelector = sliderSelector;
         this.slider = document.querySelector(sliderSelector);
-        this.sliderWrapper = this.slider.firstElementChild, //записываем обёртку слайдов    
+        this.sliderWrapper = document.querySelector(`${sliderSelector}__wrapper`), //записываем обёртку слайдов    
         this.slides = this.sliderWrapper.children; //записываем нодлист слайдов в значение класса this.slides
         this.isRunning = false; // Слайдер меняет в данный момент слайды?
         this.eachSlideWidth = 100 / this.slides.length;
@@ -98,6 +98,7 @@ class Slider {
             const moveRight = () => {
                     this.setTransition(true);
                     this.sliderWrapper.style.transform = `translateX(-${this.iters * this.eachSlideWidth/this.slidesToShow}%)`;
+                
                 },
                 moveLeft = (y) => {
                     let c = y; //возможно ещё понадобится, хотя работает без неё
@@ -107,6 +108,7 @@ class Slider {
                         c++;
                     }
                     this.sliderWrapper.style.transform = `translateX(-${this.iters * this.eachSlideWidth/this.slidesToShow}%)`; //Тот же самый элемент
+                    
 
                     setTimeout(() => { //без таймаута не работает
                         this.setTransition(true);
@@ -438,7 +440,7 @@ class Slider {
             if (i < this.currentSlide) {
                 this.pasteSlide('append');
             }
-            this.slides[i].style.width = `${this.eachSlideWidth/this.slidesToShow}%`;
+            //this.slides[i].style.width = `${this.eachSlideWidth/this.slidesToShow}%`;
             //Присваиваем каждому слайду занимаемое им место
         }
 

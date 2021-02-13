@@ -3,37 +3,64 @@ body {
     font-family: monospace;
     font-style: italic;
     color: #fff;
-    --sliderWidth: 600px;
 }
 
 h2 {
     font-size: 1.5rem
 }
 
-.slider,
-.slider2 {
-    position: relative;
-    overflow: hidden;
-    max-width: var(--sliderWidth);
-    margin-left: auto;
-    margin-right: auto;
+.slider1{
+    max-height: 300px;
+    max-width: 570px;
 }
 
-.slider__wrapper,
-.slider2__wrapper {
+.slider2, .autoslider{
+    max-height: 710px;
+    max-width: 800px;
+}
+
+.slider1,
+.slider2,
+.autoslider {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    
+    border: 12px solid sandybrown;
+    border-radius: 9px;
+}
+
+.slider1__wrapper,
+.slider2__wrapper,
+.autoslider__wrapper {
     width: 400%;
-    height: 250px;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
     position: relative;
     left: 0;
     overflow: hidden;
+    
+    display: grid;
+    
+    
 }
 
-.slider__item,
-.slider2__item {
+.autoslider__wrapper{
+    grid-template-columns: repeat(6, minmax(auto, 1fr));
+}
+
+.slider2__wrapper{
+    grid-template-columns: repeat(6, 0.0834fr);
+}
+
+.slider1__wrapper{
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.slider1__item,
+.slider2__item,
+.autoslider__item {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -53,22 +80,30 @@ h2 {
     align-items: center;
     color: #fef;
     font-family: cursive;
-    -o-object-fit: cover;
     object-fit: contain;
+    
+    width: 75%;
+    height: 100%;
+    margin: 0 auto 0 auto;
 }
 
-.slider__prev,
-.slider2__prev {
+
+
+.slider1__prev,
+.slider2__prev,
+.autoslider__prev {
     left: 0;
 }
 
-.slider__next,
-.slider2__next {
+.slider1__next,
+.slider2__next,
+.autoslider__next {
     right: 0;
 }
 
-.slider__control::before,
-.slider2__control::before {
+.slider1__control::before,
+.slider2__control::before,
+.autoslider__control::before {
     content: "";
     display: inline-block;
     width: 20px;
@@ -77,18 +112,21 @@ h2 {
     background-size: 100% 100%;
 }
 
-.slider__prev::before,
-.slider2__prev::before {
+.slider1__prev::before,
+.slider2__prev::before,
+.autoslider__prev::before {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
 }
 
-.slider__next::before,
-.slider2__next::before {
+.slider1__next::before,
+.slider2__next::before,
+.autoslider__next::before {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
 }
 
-.slider__dots-wrapper,
-.slider2__dots-wrapper {
+.slider1__dots-wrapper,
+.slider2__dots-wrapper,
+.autoslider__dots-wrapper {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -106,8 +144,9 @@ h2 {
     transition: var(--transitionTime) linear;
 }
 
-.slider__dot,
-.slider2__dot {
+.slider1__dot,
+.slider2__dot,
+.autoslider__dot {
     background: orange;
     list-style-type: none;
     -webkit-border-radius: 50%;
@@ -118,8 +157,9 @@ h2 {
     transition: background .1s linear;
 }
 
-.slider__dot:hover,
-.slider2__dot:hover {
+.slider1__dot:hover,
+.slider2__dot:hover,
+.autoslider__dot:hover {
     background: #a00;
 }
 
@@ -127,8 +167,9 @@ h2 {
     background: #500;
 }
 
-.slider__control,
-.slider2__control {
+.slider1__control,
+.slider2__control,
+.autoslider__control {
     --transitionTime: .3s;
     -webkit-transition: var(--transitionTime) linear;
     -o-transition: var(--transitionTime) linear;
@@ -164,13 +205,15 @@ h2 {
     opacity: .3;
 }
 
-.slider__control:focus,
-.slider2__control:focus {
+.slider1__control:focus,
+.slider2__control:focus,
+.autoslider__control:focus {
     outline: 0;
 }
 
-.slider__control:hover,
-.slider2__control:hover {
+.slider1__control:hover,
+.slider2__control:hover,
+.autoslider__control:hover {
     color: #fff;
     text-decoration: none;
     opacity: 1;
@@ -180,11 +223,11 @@ h2 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 860px;
-    margin-top: 20px;
+    /* height: 860px;*/
 }
 
 .title {
+    margin: 40px auto 40px auto;
     color: #000;
     text-align: center;
     font-weight: 600;
@@ -201,4 +244,11 @@ h2 {
     text-align: center;
     font-size: 1.5rem;
     display: none;
+}
+
+.header{
+    height: 100vh;
+}
+.footer{
+    height: 20vh;
 }
