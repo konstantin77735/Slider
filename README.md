@@ -9,7 +9,7 @@ Slider in pure JS (no libraries and dependencies). You can specify the number of
             slidesToShow: 1, //slides on screen
             speed: 500, //ms, default = 1000
             //animationType: 'linear', // default = ease
-
+            //keysEnable: false// default = true
             //autoplay: true, // default = false
             //autoplayDirection: 'right', //default = right
             //autoplaySlideTime: 2000, //ms, default = 4000
